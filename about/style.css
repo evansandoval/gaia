@@ -1,0 +1,247 @@
+@font-face {
+    font-family: myFirstFont;
+    src: url(Merriweather-Regular.ttf);
+}
+@font-face{
+    font-family: bannerfont;
+    src: url(BlackFriday.ttf);
+}
+
+body {
+    background-color: #fde3c6;
+    margin: 0px;
+    font-family: myFirstFont;
+}
+#fademain {
+    padding-top: 90px;
+    animation: fadeMain 2s;
+    -webkit-animation: fadeMain 2s;
+    -moz-animation: fadeMain 2s;
+    -o-animation: fadeMain 2s;
+    -ms-animation: fadeMain 2s;
+}
+@keyframes fadeMain {
+0% { opacity: 0; }
+100% { opacity: 1; }
+}
+
+@-moz-keyframes fadeMain {
+0% { opacity: 0; }
+100% { opacity: 1; }
+}
+
+@-webkit-keyframes fadeMain {
+0% { opacity: 0; }
+100% { opacity: 1; }
+}
+
+@-o-keyframes fadeMain {
+0% { opacity: 0; }
+100% { opacity: 1; }
+}
+
+h1 {
+    font-family: myFirstFont;
+    text-align: center;
+    padding: 8px;
+    margin: 0px
+}
+.main h1 {
+    padding: 2%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.banner {
+    font-family: bannerfont;
+    position: fixed;
+    width:100%;
+    margin-top: 0px;
+    margin: 0px;
+    padding-top: 6px;
+    padding-bottom:6px;
+    background-color: #0f9031;
+    color: rgb(240,255,240);
+    z-index: 1;
+}
+.banner h1{
+    display:flex;
+    width:20vw;
+}
+#logo{
+    margin-left: 10vw;
+    width:8vw;
+    min-width: 90px;
+}
+#about{
+    margin-right:10vw;
+}
+.banner img{
+    width:8vw;
+    min-width: 90px;
+    margin-top:3px;
+    border-radius: 200px;
+}
+.bannercontainer{
+    margin-right: 10vw;
+}
+.bannerlink{
+    float: right;
+    margin-right: 5vw;
+    text-align: center;
+    padding-top: 13px;
+    padding-bottom:13px;
+    text-decoration: none;
+    font-size: 22px;
+    color: rgb(240,255,240);
+}
+.bannerlink:hover{
+    color: black;
+}
+.main {
+    background-color: rgb(122, 197, 122);
+    color: #000000;
+}
+h2, h3 {
+    font-family: myFirstFont;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.columns {
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    width: 99%;
+    text-align: center;
+    margin-bottom: 70px;  
+}
+.fadeBot{
+    animation: fadeBot 1.2s;
+    -webkit-animation: fadeBot 1.2s;
+    -moz-animation: fadeBot 1.2s;
+    -o-animation: fadeBot 1.2s;
+    -ms-animation: fadeBot 1.2s;
+}
+.col {
+    margin:auto;
+    margin-top: 40px;
+    width: 33%;
+    min-width: 330px;
+}
+.invis {
+    opacity:0;
+}
+
+@keyframes fadeBot {
+0% { opacity: 0; }
+15% {opacity: 0; transform: translateY(30px);}
+100% { opacity: 1; transform: translateY(0px);}
+}
+
+@-moz-keyframes fadeBot {
+0% { opacity: 0; }
+15% {opacity: 0; transform: translateY(30px);}
+100% { opacity: 1; transform: translateY(0px);}
+}
+
+@-webkit-keyframes fadeBot {
+0% { opacity: 0; }
+15% {opacity: 0; transform: translateY(30px);}
+100% { opacity: 1; transform: translateY(0px);}
+}
+
+@-o-keyframes fadeBot {
+0% { opacity: 0; }
+15% {opacity: 0; transform: translateY(30px);}
+100% { opacity: 1; transform: translateY(0px);}
+}
+.col h1{
+    border-radius: 12px;
+    background-color: rgb(122, 197, 122);
+    width: 60%;
+    min-width: 265px;
+    margin:auto;
+}
+.hdr {
+    margin:auto;
+    margin-top: 40px;
+    width:100%;
+    text-align: center;
+    
+}
+#fadetop {
+    animation: fadeHdr 1.6s;
+    -webkit-animation: fadeHdr 1.6s;
+    -moz-animation: fadeHdr 1.6s;
+    -o-animation: fadeHdr 1.6s;
+    -ms-animation: fadeHdr 1.6s;
+}
+@keyframes fadeHdr {
+0% { opacity: 0; }
+15% {opacity: 0; transform: translateY(-30px);}
+100% { opacity: 1; transform: translateY(0px);}
+}
+
+@-moz-keyframes fadeHdr {
+0% { opacity: 0; }
+15% {opacity: 0; transform: translateY(-30px);}
+100% { opacity: 1; transform: translateY(0px);}
+}
+
+@-webkit-keyframes fadeHdr {
+0% { opacity: 0; }
+15% {opacity: 0; transform: translateY(-30px);}
+100% { opacity: 1; transform: translateY(0px);}
+}
+
+@-o-keyframes fadeHdr {
+0% { opacity: 0; }
+15% {opacity: 0; transform: translateY(-30px);}
+100% { opacity: 1; transform: translateY(0px);}
+}
+.hdr h2{
+    font-size: 5vh;
+    border-radius: 15px;
+}
+.hdr p{
+    margin: auto;
+    width: 75%;
+    font-size: 18px;
+}
+#E, #S, #G{
+    width:100px;
+    height: 100px;
+    margin-top: 20px;
+}
+#evan, #youngmin{
+    width:300px;
+    height: 300px;
+    margin-top: 20px;
+}
+p{
+    margin: 0px;
+    padding: 5px;
+    line-height: 1.5;
+}
+.txt {
+    padding: 5x;
+    font-size: 18px;
+    padding-top: 8px;
+    margin-top: 0px;
+    margin: 10px;
+    width: 90%;
+    text-align: center;
+}
+ul {
+    width: 100%;
+    margin: auto;
+}
+li {
+    text-align: left;
+}
+.concern {
+    text-decoration: underline;
+    margin-top: 20px;
+}
+#bottom {
+    margin-bottom: 40px;
+}

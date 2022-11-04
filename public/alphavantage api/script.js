@@ -1,11 +1,6 @@
-let url1 = "https://tf689y3hbj.execute-api.us-east-1.amazonaws.com/prod/authorization/search?q=";
-let ticker = "TGT"
-let url2 = "";
 let fullurl = ''
 let data;
 let stockvalues = new Map();
-let avurl1 = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=";
-let avurl2 = "";
 let stockdata
 
 document.querySelector('#push').onclick = function(){
@@ -16,7 +11,7 @@ document.querySelector('#push').onclick = function(){
     else{
         ticker = document.querySelector('#newtask input').value
         ticker = ticker.toLowerCase()
-        fullurl = avurl1 + ticker + avurl2
+        fullurl = `/avapi?symbol=${ticker}`
         console.log(fullurl)
         //fullurl = "https://cors-anywhere.herokuapp.com/" + avurl1 + ticker + avurl2
         $.ajax({

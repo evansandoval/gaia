@@ -332,7 +332,7 @@ document.getElementById("add_button").onclick = function(){
                      
                         add_company(esg_obj);
                         add_stock_to_graph(esg_obj, share);
-                        search_stock_tograph(esg_obj)
+                        search_stock_to_graph(esg_obj)
                     });
                 }
             });

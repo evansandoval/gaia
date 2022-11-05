@@ -1,4 +1,4 @@
-const labels = ['Score', 'Room for improvement'];
+const labels = ['Score', 'Room for Improvement'];
 var esg_score_map = new Map();
 var stock_values = new Map();
 var date = new Date(); date.setDate(date.getDate()-100); date = new Date(date)

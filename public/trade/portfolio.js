@@ -361,26 +361,26 @@ document.getElementById("search_button").onclick = function(){
         });
 
         // Dummy function for testing
-        esg_obj = random_esg_obj(symbol)
-        add_company(esg_obj)
-        search_stock_to_graph(esg_obj)
+        // esg_obj = random_esg_obj(symbol)
+        // add_company(esg_obj)
+        // search_stock_to_graph(esg_obj)
 
 
         // Actual Code to call API
 
-        // $(function(){
-        //     $.ajax({
-        //         url: get_esg_api_url(symbol),
-        //         success: function(data) {
-        //             $.each(data, function(i, item){
-        //                 esg_obj = make_company_esg_score(item.stock_symbol, item.environment_score, item.social_score, item.governance_score);
-        //                 
-        //                 add_company(esg_obj);
-        //                 search_stock_to_graph(esg_obj);
-        //             });
-        //         }
-        //     });
-        // });
+        $(function(){
+            $.ajax({
+                url: get_esg_api_url(symbol),
+                success: function(data) {
+                    $.each(data, function(i, item){
+                        esg_obj = make_company_esg_score(item.stock_symbol, item.environment_score, item.social_score, item.governance_score);
+                        
+                        add_company(esg_obj);
+                        search_stock_to_graph(esg_obj);
+                    });
+                }
+            });
+        });
     }
 };
 

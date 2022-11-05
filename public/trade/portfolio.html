@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade</title>
+    <link rel="stylesheet" href="portfolio.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="banner">
+        <a id="logo" href="../index.html"><img src="../about/logo.png" alt=""></a>
+        
+        <a class="bannerlink" id="about"href="../about/about.html">ABOUT</a>
+        <a class="bannerlink" href="portfolio.html">TRADE</a>
+    </div>
+    <div id="main">
+        <h1 id="portfolio_user">Trade</h1>
+    </div>
+    
+    <div class="lookups tag invis">
+        <input placeholder="Stock Symbol" id="symbol_input">
+        <input placeholder="Number of Shares" id="share_input">
+    </div>
+    <div class="center_wrapper tag invis">
+        <button class="add_button" role="button" type="button" id="search_button">Search Stocks</button>
+        <button class="add_button" role="button" type="button" id="add_button">Add Shares</button>
+    </div>
+    <div class="center_wrapper tag invis" id="single_stock_chart_wrapper tag invis">
+        <div class="col">
+            <h2>Your Last Search</h2>
+            <div class="esg_wrapper">
+                <div class="esg_wrapper_child">
+                    <div class="center_text">
+                        <h3>Environmental</h3>
+                    </div>
+                    <canvas class="esg_chart" id="env_chart_search"></canvas>
+                </div>
+                <div class="esg_wrapper_child">
+                    <div class="center_text">
+                        <h3>Social</h3>
+                    </div>
+                    <canvas class="esg_chart" id="soc_chart_search"></canvas>
+                </div>
+                <div class="esg_wrapper_child">
+                    <div class="center_text">
+                        <h3>Governance</h3>
+                    </div>
+                    <canvas class="esg_chart" id="gov_chart_search"></canvas>
+                </div>
+            </div>
+            
+            <canvas id="single_stock_chart"></canvas>
+        </div>
+        
+
+        <div class="col">
+            <h2>Your Portfolio</h2>
+            <div class="esg_wrapper">
+                <div class="esg_wrapper_child">
+                    <div class="center_text">
+                        <h3>Environmental</h3>
+                    </div>
+                    <canvas class="esg_chart" id="env_chart"></canvas>
+                </div>
+                <div class="esg_wrapper_child">
+                    <div class="center_text">
+                        <h3>Social</h3>
+                    </div>
+                    <canvas class="esg_chart" id="soc_chart"></canvas>
+                </div>
+                <div class="esg_wrapper_child">
+                    <div class="center_text">
+                        <h3>Governance</h3>
+                    </div>
+                    <canvas class="esg_chart" id="gov_chart"></canvas>
+                </div>
+            </div>
+            <canvas id="stock_chart"></canvas>
+        </div>
+        <div class="col" id="small">
+            <table id="stock_list">
+                <thead>
+                    <tr>
+                        <th>Stock Symbol</th>
+                        <th>Number of Shares</th>
+                        <th>Current Value (USD)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td id="total_value">0</td>
+                    </tr>
+                </tfoot>
+            </table> 
+        </div>
+    </div>
+    
+    
+ 
+    
+    <script src="portfolio.js"></script>
+    <script>
+        const env_chart = new Chart(
+            document.getElementById("env_chart"),
+            env_config
+        );
+        const soc_chart = new Chart(
+            document.getElementById("soc_chart"),
+            soc_config
+        );
+        const gov_chart = new Chart(
+            document.getElementById("gov_chart"),
+            gov_config
+        );
+        const stock_chart = new Chart(
+            document.getElementById("stock_chart"),
+            stock_config
+        )
+        const single_stock_chart = new Chart(
+            document.getElementById("single_stock_chart"),
+            single_stock_config
+        )
+        const env_chart_search = new Chart(
+            document.getElementById("env_chart_search"),
+            env_config_search
+        );
+        const soc_chart_search = new Chart(
+            document.getElementById("soc_chart_search"),
+            soc_config_search
+        );
+        const gov_chart_search = new Chart(
+            document.getElementById("gov_chart_search"),
+            gov_config_search
+        );
+        function add_stock_to_graph(esg_obj, share) {
+            env_chart.data.datasets[0].data[0] += esg_obj.e*1*share;
+            env_chart.data.datasets[0].data[1] += (1000 - esg_obj.e*1)*share;
+            soc_chart.data.datasets[0].data[0] += esg_obj.s*1*share;
+            soc_chart.data.datasets[0].data[1] += (1000 - esg_obj.s*1)*share;
+            gov_chart.data.datasets[0].data[0] += esg_obj.g*1*share;
+            gov_chart.data.datasets[0].data[1] += (1000 - esg_obj.g*1)*share;
+            env_chart.update();
+            soc_chart.update();
+            gov_chart.update();
+        }
+        function search_stock_to_graph(esg_obj) {
+            env_chart_search.data.datasets[0].data[0] = esg_obj.e*1;
+            env_chart_search.data.datasets[0].data[1] = 1000 - esg_obj.e*1;
+            soc_chart_search.data.datasets[0].data[0] = esg_obj.s*1;
+            soc_chart_search.data.datasets[0].data[1] = 1000 - esg_obj.s*1;
+            gov_chart_search.data.datasets[0].data[0] = esg_obj.g;
+            gov_chart_search.data.datasets[0].data[1] = 1000 - esg_obj.g*1;
+            env_chart_search.update();
+            soc_chart_search.update();
+            gov_chart_search.update();
+        }
+    </script>
+</body>
+</html>

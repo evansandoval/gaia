@@ -1,3 +1,4 @@
+//*************import packages
 const express = require('express')
 const cors = require('cors')
 require('dotenv').config()
@@ -25,4 +26,5 @@ app.use('/avapi', require('./routes/av.js'))
 //enable cors
 app.use(cors())
 
+//run server using express
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))

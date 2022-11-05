@@ -81,9 +81,6 @@ h1 {
     margin-top:3px;
     border-radius: 200px;
 }
-.bannercontainer{
-    margin-right: 10vw;
-}
 .bannerlink{
     float: right;
     margin-right: 5vw;
@@ -244,4 +241,24 @@ li {
 }
 #bottom {
     margin-bottom: 40px;
+}
+button {
+    position: relative;
+    text-align: center;
+    font-weight: 500;
+    font-size: 3em;
+    background-color: #0f9031;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+    padding: 22px;
+    padding-top:6px;
+    padding-bottom:6px;
+    border-radius: 9px;
+    font-family: myFirstFont;
+}
+.begin {
+    text-align: center;
+    margin-bottom: 65px;
 }

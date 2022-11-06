@@ -1,4 +1,4 @@
-Gaia is an ethical stock tracker named after the Greek goddess of the earth. The trade and welcome page work best on desktop, but the about page was made to be responsive on mobile as well.
+Gaia is a stock tracker named after the Greek goddess of the earth. It's designed for traders who are interested in the ethical/moral decisions of companies they're investing in. The Welcome page and Trade page work best on desktop, but the About page was made to be responsive on mobile as well.
 
 Some things we've learned and implemented for this project are:
    - Responsive Web Design with HTML/CSS and JavaScript

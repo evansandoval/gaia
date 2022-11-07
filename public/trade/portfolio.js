@@ -296,11 +296,11 @@ document.getElementById("add_button").onclick = function(){
             success: function(data) {
                 let count = 0;
                 $.each(data["Time Series (Daily)"], function(i,item) {
-                    stock_values.set(i, item['4. close'])
-                    stock_chart.data.datasets[0].data[99 - count] += round_to_two_decimals(share * item['4. close'])
-                    single_stock_chart.data.datasets[0].data[99 - count] = item['4. close']
+                    stock_values.set(i, item['5. adjusted close'])
+                    stock_chart.data.datasets[0].data[99 - count] += round_to_two_decimals(share * item['5. adjusted close'])
+                    single_stock_chart.data.datasets[0].data[99 - count] = item['5. adjusted close']
                     if (count == 99) {
-                        add_row_stock_list(symbol, share, item['4. close'])
+                        add_row_stock_list(symbol, share, item['5. adjusted close'])
                     }
                     count += 1
                 });   
@@ -352,7 +352,7 @@ document.getElementById("search_button").onclick = function(){
             success: function(data) {
                 let count = 0;
                 $.each(data["Time Series (Daily)"], function(i,item) {
-                    single_stock_chart.data.datasets[0].data[99 - count] = item['4. close']
+                    single_stock_chart.data.datasets[0].data[99 - count] = item['5. adjusted close']
                     count += 1
                 });   
                 single_stock_chart.options.plugins.title.text = symbol.toUpperCase()

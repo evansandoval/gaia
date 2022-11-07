@@ -6,16 +6,21 @@ const express = require('express')
 const router = express.Router()
 const needle = require('needle')
 const urlfunc = require('url')
+const apicache = require('apicache')
 //env variables
 const API_BASE_URL = process.env.AV_url
 const API_KEY_NAME = process.env.AV_key_name
 const API_KEY_VALUE = process.env.AV_key_value
 
-router.get('/', async (req,res) => {
+
+//init cache
+let cache = apicache.middleware
+
+router.get('/', cache('10 days'), async (req,res) => {
     try {
         const params = new URLSearchParams({
             [API_KEY_NAME]: API_KEY_VALUE,
-            ['function']: 'TIME_SERIES_DAILY',
+            ['function']: 'TIME_SERIES_DAILY_ADJUSTED',
             ...urlfunc.parse(req.url, true).query
         })
         const apiRes = await needle('get', `${API_BASE_URL}?${params}`)

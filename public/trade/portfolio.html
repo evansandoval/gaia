@@ -9,13 +9,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="icon" type="image/x-icon" href="icon.jpg">
+    <link rel="icon" type="image/x-icon" href="../assets/icon.jpg">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="banner">
-        <a id="logo" href="../index.html"><img src="../about/logo.png" alt=""></a>
+        <a id="logo" href="../index.html"><img src="../assets/logo.png" alt=""></a>
         
         <a class="bannerlink" id="about"href="../about/about.html">ABOUT</a>
         <a class="bannerlink" href="portfolio.html">TRADE</a>
@@ -110,61 +110,5 @@
  
     
     <script src="portfolio.js"></script>
-    <script>
-        const env_chart = new Chart(
-            document.getElementById("env_chart"),
-            env_config
-        );
-        const soc_chart = new Chart(
-            document.getElementById("soc_chart"),
-            soc_config
-        );
-        const gov_chart = new Chart(
-            document.getElementById("gov_chart"),
-            gov_config
-        );
-        const stock_chart = new Chart(
-            document.getElementById("stock_chart"),
-            stock_config
-        )
-        const single_stock_chart = new Chart(
-            document.getElementById("single_stock_chart"),
-            single_stock_config
-        )
-        const env_chart_search = new Chart(
-            document.getElementById("env_chart_search"),
-            env_config_search
-        );
-        const soc_chart_search = new Chart(
-            document.getElementById("soc_chart_search"),
-            soc_config_search
-        );
-        const gov_chart_search = new Chart(
-            document.getElementById("gov_chart_search"),
-            gov_config_search
-        );
-        function add_stock_to_graph(esg_obj, share) {
-            env_chart.data.datasets[0].data[0] += esg_obj.e*1*share;
-            env_chart.data.datasets[0].data[1] += (1000 - esg_obj.e*1)*share;
-            soc_chart.data.datasets[0].data[0] += esg_obj.s*1*share;
-            soc_chart.data.datasets[0].data[1] += (1000 - esg_obj.s*1)*share;
-            gov_chart.data.datasets[0].data[0] += esg_obj.g*1*share;
-            gov_chart.data.datasets[0].data[1] += (1000 - esg_obj.g*1)*share;
-            env_chart.update();
-            soc_chart.update();
-            gov_chart.update();
-        }
-        function search_stock_to_graph(esg_obj) {
-            env_chart_search.data.datasets[0].data[0] = esg_obj.e*1;
-            env_chart_search.data.datasets[0].data[1] = 1000 - esg_obj.e*1;
-            soc_chart_search.data.datasets[0].data[0] = esg_obj.s*1;
-            soc_chart_search.data.datasets[0].data[1] = 1000 - esg_obj.s*1;
-            gov_chart_search.data.datasets[0].data[0] = esg_obj.g;
-            gov_chart_search.data.datasets[0].data[1] = 1000 - esg_obj.g*1;
-            env_chart_search.update();
-            soc_chart_search.update();
-            gov_chart_search.update();
-        }
-    </script>
 </body>
 </html>

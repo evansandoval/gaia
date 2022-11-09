@@ -2,6 +2,8 @@ const labels = ['Score', 'Room for Improvement'];
 var esg_score_map = new Map();
 var stock_values = new Map();
 var date = new Date(); date.setDate(date.getDate()-100); date = new Date(date)
+
+//configuration for pie charts (Your Portfolio)
 const env_config = {
     type: 'pie',
     data: {
@@ -56,6 +58,8 @@ const gov_config = {
         }
     }
 };
+
+//configuration for pie charts (Your Last Search)
 const env_config_search = {
     type: 'pie',
     data: {
@@ -110,6 +114,7 @@ const gov_config_search = {
         }
     }
 };
+// configuration for "Your Portfolio" value line graph
 const stock_config =  {
     type: 'line',
     data: {
@@ -162,6 +167,7 @@ const stock_config =  {
         }
     }
 };
+//configuration for "Your Last Search" value line graph
 const single_stock_config =  {
     type: 'line',
     data: {
@@ -215,10 +221,6 @@ const single_stock_config =  {
     }
 };
 
-
-function set_name(name) {
-    document.getElementById('portfolio_user').innerHTML = name + "'s portfolio"
-}
 function get_esg_api_url(symbol) {
     return `/esgapi?q=${symbol}`;
 }
@@ -239,10 +241,6 @@ function add_company(esg_obj) {
 function get_company(name) {
     return esg_score_map.get(name);
 }
-function toggle_obj(obj_id) {
-    $(document).ready(function(){
-    });
-}
 function random_int(L, R) {
     return L + Math.floor(Math.random()*(R - L))
 }
@@ -260,6 +258,7 @@ function is_int(str) {
     }
     return true
 }
+//adds a number of stocks to the table of stocks
 function add_row_stock_list(name, share, price) {
     const total_value = round_to_two_decimals(price*share)
     var prev = document.getElementById("total_value").innerHTML
@@ -279,7 +278,7 @@ function add_row_stock_list(name, share, price) {
     cell3.appendChild(document.createTextNode(total_value.toFixed(2)))
 }
 
-
+//add button functionality
 document.getElementById("add_button").onclick = function(){
     let symbol = document.getElementById("symbol_input").value
     const share = document.getElementById("share_input").value
@@ -339,6 +338,7 @@ document.getElementById("add_button").onclick = function(){
         });
     }
 };
+//search button functionality
 document.getElementById("search_button").onclick = function(){
     let symbol = document.getElementById("symbol_input").value
     if(symbol.length == 0){
@@ -415,3 +415,61 @@ for (var i = 0; i < tags.length; i++) {
   }
 }
 });
+
+//initialization of all chart.js charts
+const env_chart = new Chart(
+    document.getElementById("env_chart"),
+    env_config
+);
+const soc_chart = new Chart(
+    document.getElementById("soc_chart"),
+    soc_config
+);
+const gov_chart = new Chart(
+    document.getElementById("gov_chart"),
+    gov_config
+);
+const stock_chart = new Chart(
+    document.getElementById("stock_chart"),
+    stock_config
+)
+const single_stock_chart = new Chart(
+    document.getElementById("single_stock_chart"),
+    single_stock_config
+)
+const env_chart_search = new Chart(
+    document.getElementById("env_chart_search"),
+    env_config_search
+);
+const soc_chart_search = new Chart(
+    document.getElementById("soc_chart_search"),
+    soc_config_search
+);
+const gov_chart_search = new Chart(
+    document.getElementById("gov_chart_search"),
+    gov_config_search
+);
+//function called by add button
+function add_stock_to_graph(esg_obj, share) {
+    env_chart.data.datasets[0].data[0] += esg_obj.e*1*share;
+    env_chart.data.datasets[0].data[1] += (1000 - esg_obj.e*1)*share;
+    soc_chart.data.datasets[0].data[0] += esg_obj.s*1*share;
+    soc_chart.data.datasets[0].data[1] += (1000 - esg_obj.s*1)*share;
+    gov_chart.data.datasets[0].data[0] += esg_obj.g*1*share;
+    gov_chart.data.datasets[0].data[1] += (1000 - esg_obj.g*1)*share;
+    env_chart.update();
+    soc_chart.update();
+    gov_chart.update();
+}
+//function called by search button
+function search_stock_to_graph(esg_obj) {
+    env_chart_search.data.datasets[0].data[0] = esg_obj.e*1;
+    env_chart_search.data.datasets[0].data[1] = 1000 - esg_obj.e*1;
+    soc_chart_search.data.datasets[0].data[0] = esg_obj.s*1;
+    soc_chart_search.data.datasets[0].data[1] = 1000 - esg_obj.s*1;
+    gov_chart_search.data.datasets[0].data[0] = esg_obj.g;
+    gov_chart_search.data.datasets[0].data[1] = 1000 - esg_obj.g*1;
+    env_chart_search.update();
+    soc_chart_search.update();
+    gov_chart_search.update();
+}

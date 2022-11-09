@@ -1,4 +1,4 @@
-//av api
+// av api
 // CALL USING /avapi?symbol=TGT
 
 
@@ -20,6 +20,7 @@ router.get('/', cache('10 days'), async (req,res) => {
     try {
         const params = new URLSearchParams({
             [API_KEY_NAME]: API_KEY_VALUE,
+            //change the line below if you want to use a different search function for AlphaVantage
             ['function']: 'TIME_SERIES_DAILY_ADJUSTED',
             ...urlfunc.parse(req.url, true).query
         })
@@ -32,5 +33,4 @@ router.get('/', cache('10 days'), async (req,res) => {
     
     
 })
-
 module.exports = router

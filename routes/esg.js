@@ -15,10 +15,12 @@ let cache = apicache.middleware
 
 router.get('/', cache('10 days'), async (req,res) => {
     try {
+        //sets params equal to URL Search parameters
         const params = new URLSearchParams({
             [API_KEY_NAME]: API_KEY_VALUE,
             ...urlfunc.parse(req.url, true).query
         })
+        ////adds the parameters to the API URL to make the call
         const apiRes = await needle('get', `${API_BASE_URL}?${params}`)
         const data = apiRes.body
         res.status(200).json(data)

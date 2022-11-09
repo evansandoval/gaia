@@ -19,7 +19,7 @@ app.set('trust proxy', 1)
 //set static folder
 app.use(express.static('public'))
 
-//routes
+//routes to call API's
 app.use('/esgapi', require('./routes/esg.js'))
 app.use('/avapi', require('./routes/av.js'))
 

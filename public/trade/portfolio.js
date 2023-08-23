@@ -452,11 +452,11 @@ const gov_chart_search = new Chart(
 //function called by add button
 function add_stock_to_graph(esg_obj, share) {
     env_chart.data.datasets[0].data[0] += esg_obj.e*1*share;
-    env_chart.data.datasets[0].data[1] += (1000 - esg_obj.e*1)*share;
+    env_chart.data.datasets[0].data[1] += (100 - esg_obj.e*1)*share;
     soc_chart.data.datasets[0].data[0] += esg_obj.s*1*share;
-    soc_chart.data.datasets[0].data[1] += (1000 - esg_obj.s*1)*share;
+    soc_chart.data.datasets[0].data[1] += (100 - esg_obj.s*1)*share;
     gov_chart.data.datasets[0].data[0] += esg_obj.g*1*share;
-    gov_chart.data.datasets[0].data[1] += (1000 - esg_obj.g*1)*share;
+    gov_chart.data.datasets[0].data[1] += (100 - esg_obj.g*1)*share;
     env_chart.update();
     soc_chart.update();
     gov_chart.update();
@@ -464,11 +464,11 @@ function add_stock_to_graph(esg_obj, share) {
 //function called by search button
 function search_stock_to_graph(esg_obj) {
     env_chart_search.data.datasets[0].data[0] = esg_obj.e*1;
-    env_chart_search.data.datasets[0].data[1] = 1000 - esg_obj.e*1;
+    env_chart_search.data.datasets[0].data[1] = 100 - esg_obj.e*1;
     soc_chart_search.data.datasets[0].data[0] = esg_obj.s*1;
-    soc_chart_search.data.datasets[0].data[1] = 1000 - esg_obj.s*1;
+    soc_chart_search.data.datasets[0].data[1] = 100 - esg_obj.s*1;
     gov_chart_search.data.datasets[0].data[0] = esg_obj.g;
-    gov_chart_search.data.datasets[0].data[1] = 1000 - esg_obj.g*1;
+    gov_chart_search.data.datasets[0].data[1] = 100 - esg_obj.g*1;
     env_chart_search.update();
     soc_chart_search.update();
     gov_chart_search.update();
